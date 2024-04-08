@@ -1,0 +1,90 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Match Details</title>
+</head>
+<body>
+    <h1>IPL Match Details Form</h1>
+    <form action="/submit" method="POST">
+        <!-- Select favorite IPL team -->
+        <label for="your-team">Select your favorite IPL team:</label>
+        <select id="your-team" name="your-team">
+            <option value="Chennai Super Kings">Chennai Super Kings</option>
+            <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+            <option value="Delhi Capitals">Delhi Capitals</option>
+            <option value="Rajasthan Royals">Rajasthan Royals</option>
+            <option value="Mumbai Indians">Mumbai Indians</option>
+        </select>
+        <br><br>
+        <!-- Select opponent IPL team -->
+        <label for="opponent-team">Select opponent IPL team:</label>
+        <select id="opponent-team" name="opponent-team">
+            <option value="Chennai Super Kings">Chennai Super Kings</option>
+            <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+            <option value="Delhi Capitals">Delhi Capitals</option>
+            <option value="Rajasthan Royals">Rajasthan Royals</option>
+            <option value="Mumbai Indians">Mumbai Indians</option>
+        </select>
+        <br><br>
+        <!-- Enter number of overs -->
+        <label for="overs">Enter number of overs:</label>
+        <input type="number" id="overs" name="overs" min="1" max="50" required>
+        <br><br>
+        <!-- Select qualification position -->
+        <label for="qualification-position">Select qualification position (1 to 5):</label>
+        <select id="qualification-position" name="qualification-position">
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+            <option value="4">4th</option>
+            <option value="5">5th</option>
+        </select>
+        <br><br>
+        <!-- Choose innings preference -->
+        <label>Choose innings preference:</label><br>
+        <input type="radio" id="batting-first" name="innings" value="batting-first">
+        <label for="batting-first">Batting First</label><br>
+        <input type="radio" id="bowling-first" name="innings" value="bowling-first">
+        <label for="bowling-first">Bowling First</label>
+        <br><br>
+        <!-- Batting details (visible when batting first is selected) -->
+        <div id="batting-details" style="display: none;">
+            <label for="runs-scored">Runs Scored (if batting first):</label>
+            <input type="number" id="runs-scored" name="runs-scored">
+        </div>
+        <!-- Chasing details (visible when bowling first is selected) -->
+        <div id="chasing-details" style="display: none;">
+            <label for="runs-to-chase">Runs to Chase (if bowling first):</label>
+            <input type="number" id="runs-to-chase" name="runs-to-chase">
+        </div>
+        <br><br>
+        <!-- Submit button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- JavaScript to show/hide relevant input fields based on innings preference -->
+    <script>
+        const battingFirstRadio = document.getElementById('batting-first');
+        const bowlingFirstRadio = document.getElementById('bowling-first');
+        const battingDetailsDiv = document.getElementById('batting-details');
+        const chasingDetailsDiv = document.getElementById('chasing-details');
+
+        battingFirstRadio.addEventListener('change', () => {
+            if (battingFirstRadio.checked) {
+                battingDetailsDiv.style.display = 'block';
+                chasingDetailsDiv.style.display = 'none';
+            }
+        });
+
+        bowlingFirstRadio.addEventListener('change', () => {
+            if (bowlingFirstRadio.checked) {
+                battingDetailsDiv.style.display = 'none';
+                chasingDetailsDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
