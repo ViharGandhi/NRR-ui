@@ -137,7 +137,7 @@ function RestrictIn(YourTeam,OpponentTeam,RunsToChase,Overs,DesiredPostion)
          let upperlimit = CalculateOver3(teaminfo1,teaminfo2,RunsToChase,Overs);
          let upperlimitnrr = CalaculateNrrOver2(teaminfo1,RunsToChase,Overs,upperlimit)
          let ans1 = ` ${YourTeam} need to chase ${RunsToChase} between ${lowerlimit[0]} and ${upperlimit} Overs.`
-         let ans2 = `Revised NRR for ${YourTeam} will be between ${lowerlimit[1].toFixed(3)} to ${upperlimitnrr.toFixed(3)}.`
+         let ans2 = `Revised NRR for ${YourTeam} will be between ${upperlimitnrr.toFixed(3)} to ${lowerlimit[1].toFixed(3)} .`
          return [ans1,ans2]
       }
   }
